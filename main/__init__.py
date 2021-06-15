@@ -44,7 +44,7 @@ def create_app():
     # TODO: Connect db
 
     api.add_resource(controllers.LoginController, '/login')
-    api.add_resource(controllers.LoginController, '/register')
+    api.add_resource(controllers.RegisterController, '/register')
     api.add_resource(controllers.UserController, '/user')
 
     # TODO: Register blueprints from Lauta & Gianca

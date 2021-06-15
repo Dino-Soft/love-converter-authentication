@@ -1,1 +1,1 @@
-from user import UserRepository
+from main.repositories.user import UserRepository

@@ -1,6 +1,7 @@
 version: '3'
 services:
   app_auth:
+    # docker build -t auth_flask:v0.1 . (in '/love-converter-authentication')
     image: 'auth_flask:v0.1'
     container_name: auth
     ports:
@@ -10,9 +11,9 @@ services:
     environment:
       - 'DEBUG=${DEBUG}'
       - 'TESTING=${TESTING}'
-      - 'PORT=${PORT}'
       - 'SQLALCHEMY_TRACK_MODIFICATIONS=${SQLALCHEMY_TRACK_MODIFICATIONS}'
-      - 'SQLALCHEMY_DATABASE_URI=${SQLALCHEMY_DATABASE_URI}'
+      - 'DATABASE_TYPE=${DATABASE_TYPE}'
+      - 'DATABASE_SERVICE=${DATABASE_SERVICE}'
       - 'JWT_SECRET_KEY=${JWT_SECRET_KEY}'
       - 'JWT_ACCESS_TOKEN_EXPIRES=${JWT_ACCESS_TOKEN_EXPIRES}'
       - 'DB_NAME=${MYSQL_DATABASE}'
@@ -35,6 +36,5 @@ services:
       - 'MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}'
     volumes:
       - './mysql/_data:/var/lib/mysql'
-    restart: always
 networks:
   auth_network: null
