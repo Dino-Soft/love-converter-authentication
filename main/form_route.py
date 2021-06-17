@@ -23,21 +23,6 @@ class UserRegistration(FlaskForm):
                          validator_field
                      ])
 
-    # No definido en el model de usuarios
-    """   name = TextField('Name',
-                        [
-                            validators.Required(message="fill the field with a name"),
-                            validators.length(min=4, max=25, message='The length of the name is not valid'),
-                            validator_field
-                        ])
-   
-       lastname = TextField('Lastname',
-                            [
-                                validators.Required(message="fill the field with a lastname"),
-                                validators.length(min=4, max=25, message='The length of the lastname is not valid'),
-                                validator_field
-                            ])"""
-
     password = PasswordField('Password',
                              [
                                  validators.Required(),
@@ -55,18 +40,3 @@ class UserRegistration(FlaskForm):
 
     # Definition of submit field
     submit = SubmitField("Send")
-
-
-# Ya definida en "validator\user.py"
-"""# Check if the email already exists in the Data Base
-def validate_email(self, field):
-    if User.query.filter_by(email=field.data).first():
-        raise ValidationError('Email already exists')"""
-
-# No se usa mas
-"""def existence_validator(email):
-    aux = False
-
-    if db.session.query(User).filter(User.email.ilike(email)).count() == 0:
-        aux = True
-    return aux"""
