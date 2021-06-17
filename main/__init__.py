@@ -34,7 +34,7 @@ def create_app():
     jwt.init_app(app)
 
     # Flask CORS configuration to allow access
-    CORS(app, resources={r"/*": {"origins": "*", "expose_headers":  ['X-Total-Count']}})
+    CORS(app, resources={r"/*": {"origins": "*", "expose_headers": ['X-Total-Count']}})
 
     # When the database is "connected in Flask app, the primary keys will activate"
     with app.app_context():
@@ -46,9 +46,6 @@ def create_app():
     api.add_resource(controllers.LoginController, '/login')
     api.add_resource(controllers.RegisterController, '/register')
     api.add_resource(controllers.UserController, '/user')
-
-    # TODO: Register blueprints from Lauta & Gianca
-    # app.register_blueprint()
 
     # Final app initialization
     api.init_app(app)

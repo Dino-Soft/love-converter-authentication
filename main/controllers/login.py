@@ -1,7 +1,6 @@
 from flask import request
 from flask_jwt_extended import create_access_token
 from flask_restful import Resource
-
 from main.extensions import db
 from main.mappers import UserMapper
 from main.models import UserModel
@@ -11,6 +10,7 @@ user_mapper = UserMapper()
 
 class Login(Resource):
 
+    @staticmethod
     def post(self):
         entered_email = str(request.get_json().get('email'))
         entered_password = str(request.get_json().get('password'))

@@ -1,11 +1,9 @@
 from flask import request
 from flask_restful import Resource
-
 from main.extensions import db
 from main.mappers import UserMapper
 from main.models import UserModel
 from main.validators import email_validator
-from main.services import UserService
 
 user_mapper = UserMapper()
 
@@ -30,10 +28,15 @@ class Register(Resource):
             )
             # TODO: Define last updated and last access methods
 
+            assert (user_instance.username is not None and user_instance.plain_password is not None and
+                    user_instance.email is not None, 'Username, password or email are required'
+                    )
+
             db.session.add(user_instance)
             try:
                 db.session.commit()
                 return 'Done. Please activate your account in order to sign in', 201
+                # return redirect(url_for("auth.login"))
             except Exception as error:
                 db.session.rollback()
                 print("\nUser operation error: ", error)

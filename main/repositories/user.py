@@ -1,8 +1,25 @@
+from werkzeug.security import check_password_hash, generate_password_hash
+
 from main import db
 from main.models import UserModel
 
 
 class UserRepository:
+
+    # Password security management
+    @property
+    def plain_password(self):
+        raise AttributeError("The password can not be obtained. It is prohibited.")
+        # We won't obtain the password accessing with a get method
+
+    @plain_password.setter
+    def plain_password(self, password):
+        self.password = generate_password_hash(password)
+        # We encrypt the plain text password from the JSON received in the user registration
+
+    def validate_password(self, password):
+        return check_password_hash(self.password, password)
+        # Compares the received password with the database password
 
     @staticmethod
     def get_register_by_id(id):

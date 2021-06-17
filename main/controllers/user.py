@@ -4,7 +4,6 @@ from flask_restful import Resource
 from main.extensions import db
 from main.mappers import UserMapper
 from main.models import UserModel
-from main.validators import email_validator
 
 user_mapper = UserMapper()
 

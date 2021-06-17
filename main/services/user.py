@@ -13,19 +13,17 @@ class User:
     """
 
     # Password security management
-    @property
-    def plain_password(self):
-        raise AttributeError("The password can not be obtained. It is prohibited.")
-        # We won't obtain the password accessing with a get method
+    @staticmethod
+    def plain_password():
+        repository.plain_password()
 
-    @plain_password.setter
-    def plain_password(self, password):
-        self.password = generate_password_hash(password)
-        # We encrypt the plain text password from the JSON received in the user registration
+    @staticmethod
+    def plain_password(password):
+        repository.plain_password(password)
 
-    def validate_password(self, password):
-        return check_password_hash(self.password, password)
-        # Compares the received password with the database password
+    @staticmethod
+    def validate_password(password):
+        repository.validate_password(password)
 
     @staticmethod
     def get_user_by_id(id):
