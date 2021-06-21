@@ -3,8 +3,8 @@ from main.models import UserModel
 import re
 from marshmallow import validate
 
-check_email = r'^[(a-z0-9\_\-\.)]+@[(a-z0-9\_\-\.)]+\.[(a-z)]{2,15}$'
-check_password = r'^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$'
+check_email = r'^[(a-z0-9\_\-\.)]+@[(a-z0-9\_\-\.)]+\.[(a-z)]{1,15}$'
+check_password = r'^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{12,30}$'
 
 
 def get_email_existance(email):
@@ -17,11 +17,11 @@ def get_email_existance(email):
 
 
 def check_email(email):
-    return re.match(check_email, email) is not None
+    return re.match(check_email, email) is not None if len(email) <= 100 else False
 
 
 def check_user(username):
-    return username.isalnum()
+    return username.isalnum() if len(username) <= 100 else False
 
 
 def check_password(password):
