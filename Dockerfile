@@ -15,9 +15,13 @@ ADD main ./main
 ADD app.py .
 
 #instala dependencias del sistema
-RUN apk add build-base && \
-    apk add mysql-client && \
-    rm -rf /var/cache/apk/*
+RUN apk add build-base
+RUN apk add mysql-client
+RUN apk add mariadb-dev
+
+RUN rm -rf /var/cache/apk/*
+
+RUN python3 -m pip install --upgrade pip
 
 ADD requirements.txt ./requirements.txt
 
