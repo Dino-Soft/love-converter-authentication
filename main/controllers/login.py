@@ -12,19 +12,22 @@ user_mapper = UserMapper()
 class Login(Resource):
 
     @staticmethod
-    def post(self):
+    def post():
         entered_email = str(request.get_json().get('email'))
         entered_password = str(request.get_json().get('password'))
-        if check_email(entered_email) and check_password(entered_password):
-            user = db.session.query(UserModel).filter(UserModel.email == entered_email).first_or_404()
-
-            # True value if both passwords match
-            if user.validate_password(entered_password):
-                access_token = create_access_token(identity=user)
-                data = {
-                    "user": user_mapper.dump(user),
-                    "token": access_token
-                }
-                return data, 200
-            else:
-                return 'You have entered wrong credentials.', 401
+        
+        # Gianca: Deshabilitado porque trae problemas -->> Corregir.
+        # if check_email(entered_email) and check_password(entered_password):
+        user = db.session.query(UserModel).filter(UserModel.email == entered_email).first_or_404()
+        
+        # Gianca: validate_password es un metodo del "user" antes declarado?
+        # True value if both passwords match
+        if user.validate_password(entered_password):
+            access_token = create_access_token(identity=user)
+            data = {
+                "user": user_mapper.dump(user),
+                "token": access_token
+            }
+            return data, 200
+        else:
+            return 'You have entered wrong credentials.', 401
