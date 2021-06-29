@@ -16,11 +16,11 @@ class Login(Resource):
         entered_email = str(request.get_json().get('email'))
         entered_password = str(request.get_json().get('password'))
         
-        # Gianca: Deshabilitado porque trae problemas -->> Corregir.
+        # TODO Deshabilitado porque trae problemas -->> Corregir.
         # if check_email(entered_email) and check_password(entered_password):
         user = db.session.query(UserModel).filter(UserModel.email == entered_email).first_or_404()
         
-        # Gianca: validate_password es un metodo del "user" antes declarado?
+        # TODO validate_password es un metodo del "user" antes declarado?
         # True value if both passwords match
         if user.validate_password(entered_password):
             access_token = create_access_token(identity=user)

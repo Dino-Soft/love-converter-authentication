@@ -15,3 +15,5 @@ class TestRoute(unittest.TestCase):
     def test_404(self):
         rv = self.app.get('/other')
         self.assertEqual(rv.status, '404 NOT FOUND')
+
+    # TODO: Faltaría el de registrar, login, recuperar.

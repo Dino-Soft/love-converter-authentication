@@ -12,3 +12,7 @@ class TestDB(unittest.TestCase):
     def tearDown(self):
         self.app_context.pop()
 
+
+    # TODO: Agregar CRUD a los tests.
+
+    

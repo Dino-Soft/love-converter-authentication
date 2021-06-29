@@ -29,6 +29,8 @@ class TestMail(unittest.TestCase):
             self.assertIsNotNone(msg.date)
             self.assertEqual(len(outbox), 1)
             self.assertEqual(msg.sender, self.app.extensions['mail'].default_sender)
+    
+    # TODO: Pablo, todo tuyo lml.
 
     def test_send_message(self):
         with self.mail.record_messages() as outbox:

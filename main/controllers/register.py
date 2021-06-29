@@ -14,16 +14,18 @@ class Register(Resource):
     @staticmethod
     def post():
         json = request.get_json()
-         # Gianca: Deshabilitado porque trae problemas -->> Corregir.
+        
+        # TODO Deshabilitado porque trae problemas -->> Corregir.
+        
         # if check_email(json["email"]):
         email_validator(json["email"])
         
-        # Gianca: aca se deberia encriptar la password...
+        # TODO aca se deberia encriptar la password...
         #encrypt_password = ....plain_password(json.get("password"))
 
 
         if json != "":
-            # Gianca: Deshabilitado porque trae problemas -->> Corregir.
+            # TODO Deshabilitado porque trae problemas -->> Corregir.
             #if check_user(json["username"]) and check_password(json["password"]):
 
             user_instance = UserModel(
@@ -44,7 +46,6 @@ class Register(Resource):
             try:
                 db.session.commit()
                 return 'Done. Please activate your account in order to sign in', 201
-                # return redirect(url_for("auth.login"))
             except Exception as error:
                 db.session.rollback()
                 print("\nUser operation error: ", error)
