@@ -15,16 +15,18 @@ class Register(Resource):
     @staticmethod
     def post():
         json = request.get_json()
-        
+
+        # TODO Esta logica deberia estar en el servicio, el controlador solo deberia obtener el json y pasarselo al servicio
+
         # TODO Deshabilitado porque trae problemas -->> Corregir.
-        
+
         if json != "":
             # TODO Deshabilitado porque trae problemas -->> Corregir.
-            #if check_user(json["username"]) and check_password(json["password"]):
-            
-             # if check_email(json["email"]):
+            # if check_user(json["username"]) and check_password(json["password"]):
+
+            # if check_email(json["email"]):
             email_validator(json["email"])
-            
+
             # TODO aca se deberia encriptar la password...
             # user_repository.plain_password(json.get("password"))
 

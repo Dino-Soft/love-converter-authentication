@@ -15,7 +15,10 @@ class Login(Resource):
     def post():
         entered_email = str(request.get_json().get('email'))
         entered_password = str(request.get_json().get('password'))
-        
+
+        # TODO Esta logica deberia estar en el servicio, el controlador solo deberia obtener el json y pasarselo al servicio
+
+
         # TODO Deshabilitado porque trae problemas -->> Corregir.
         # if check_email(entered_email) and check_password(entered_password):
         user = db.session.query(UserModel).filter(UserModel.email == entered_email).first_or_404()
