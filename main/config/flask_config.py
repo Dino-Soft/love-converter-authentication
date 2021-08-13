@@ -14,6 +14,7 @@ DB_NAME = os.getenv('MYSQL_DATABASE')
 class Config(object):
     """Base config, uses staging database server."""
     SQLALCHEMY_DATABASE_URI = DB_TYPE + DB_USERNAME + ":" + DB_ROOT_PASSWORD + "@" + DB_SERVER + "/" + DB_NAME
+    SQLALCHEMY_TRACK_MODIFICATIONS = bool(os.getenv('SQLALCHEMY_TRACK_MODIFICATIONS'))
 
 
 # This classes heredate from Config
