@@ -11,11 +11,13 @@ user_mapper = UserMapper()
 class User(Resource):
 
     def get(self, id):
+        # TODO Not fixed
         if isinstance(id, int):
             user = db.session.query(UserModel).get_or_404(id)
             return user.to_json()
 
     def put(self, id):
+        # TODO Not fixed
         if isinstance(id, int):
             user = db.session.query(UserModel).get_or_404(id)
             data = request.get_json().items()
@@ -27,6 +29,7 @@ class User(Resource):
             return user.to_json(), 201
 
     def delete(self, id):
+        # TODO Not fixed
         if isinstance(id, int):
             user = db.session.query(UserModel).get_or_404(id)
             db.session.delete(user)

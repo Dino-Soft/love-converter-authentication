@@ -38,5 +38,3 @@ class User:
             repository.create_user(user_instance)
         except Exception as error:
             return error, 409
-
-
