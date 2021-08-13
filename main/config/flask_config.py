@@ -1,4 +1,8 @@
 import os
+from dotenv import load_dotenv
+
+# Loading environment variables
+load_dotenv()
 
 DB_TYPE = os.getenv('DATABASE_TYPE')
 DB_USERNAME = os.getenv('MYSQL_USER')
@@ -10,7 +14,6 @@ DB_NAME = os.getenv('MYSQL_DATABASE')
 class Config(object):
     """Base config, uses staging database server."""
     SQLALCHEMY_DATABASE_URI = DB_TYPE + DB_USERNAME + ":" + DB_ROOT_PASSWORD + "@" + DB_SERVER + "/" + DB_NAME
-    # TODO: DELETE mysql://username:password@server/db
 
 
 # This classes heredate from Config

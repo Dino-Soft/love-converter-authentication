@@ -137,3 +137,5 @@ dmypy.json
 **/pyvenv.cfg
 
 docker/mysql/_data
+
+.env

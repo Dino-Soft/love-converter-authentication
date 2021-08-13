@@ -16,4 +16,11 @@
 
 2. Check if it is successfully installed:  `mysql_config --version`
 3. Create a virtual environment: `python3 -m venv .`
-4. Lastly, install the venv requirements with pip3: `pip3 install -r requirements.txt` 
+4. Install the venv requirements with pip3: `pip3 install -r requirements.txt`
+5. Define the environment using a `.env` file from the sample file `~/env.local`
+6. Connect to the sample MySQL database:
+   - MySQL DB Name: `sql10430672`
+   - MySQL User Name: `sql10430672`
+   - MySQL Password: `apJbbscxAm`
+   - MySQL Host Name: `sql10.freemysqlhosting.net`
+   - Online view: [PHPMyAdmin](https://www.phpmyadmin.co/)
