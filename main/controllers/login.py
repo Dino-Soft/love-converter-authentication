@@ -11,6 +11,7 @@ user_mapper = UserMapper()
 
 class Login(Resource):
 
+    # TODO at login it must update variable last access
     @staticmethod
     def post():
         entered_email = str(request.get_json().get('email'))
