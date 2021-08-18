@@ -11,20 +11,15 @@ user_mapper = UserMapper()
 
 class Login(Resource):
 
+    # TODO at login it must update variable last access
     @staticmethod
     def post():
-        entered_email = str(request.get_json().get('email'))
-        entered_password = str(request.get_json().get('password'))
+        data = request.get_json()
+        entered_email = data['email']
+        entered_password = data['password']
 
-        # TODO Esta logica deberia estar en el servicio, el controlador solo deberia obtener el json y pasarselo al servicio
-
-
-        # TODO Deshabilitado porque trae problemas -->> Corregir.
-        # if check_email(entered_email) and check_password(entered_password):
         user = db.session.query(UserModel).filter(UserModel.email == entered_email).first_or_404()
-        
-        # TODO validate_password es un metodo del "user" antes declarado?
-        # True value if both passwords match
+
         if user.validate_password(entered_password):
             access_token = create_access_token(identity=user)
             data = {
