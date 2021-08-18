@@ -1,8 +1,10 @@
 from flask import request
 from flask_restful import Resource
-from main.services.auth import Auth
+from main.extensions import db
+from main.services import AuthService
+from main.models import UserModel
 
-auth = Auth()
+service = AuthService()
 
 
 class Login(Resource):
@@ -10,9 +12,9 @@ class Login(Resource):
     # TODO at login it must update variable last access
     @staticmethod
     def post():
-        json = request.get_json()
-
-        try:
-            return auth.login(json), 201
-        except Exception as error:
-            return error, 409
+        data = request.get_json()
+        if data != '':
+            try:
+                return service.login(data), 200
+            except Exception as e:
+                return str(e), 401

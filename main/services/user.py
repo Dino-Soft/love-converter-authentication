@@ -10,14 +10,17 @@ class User:
 
     @staticmethod
     def get_user_by_id(id):
+
         repository.get_user_by_id(id)
 
     @staticmethod
     def delete_user_by_id(id):
+        # TODO: Finish
         repository.delete_user_by_id(id)
 
     @staticmethod
     def edit_user_by_id(id, data):
+        # TODO: Finish
         repository.edit_user_by_id(id, data)
 
     @staticmethod
