@@ -33,7 +33,7 @@ services:
       
     links:
       # DNS names "db" the ip and port from the database
-      - "db:database"
+      - "db:db"
 
   db:
     image: 'ubuntu/mysql:8.0-21.04_edge'
