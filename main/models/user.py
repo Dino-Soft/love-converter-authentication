@@ -8,7 +8,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), unique=True, index=True, nullable=False)
     email = db.Column(db.String(100), unique=True, index=True, nullable=False)
-    password = db.Column(db.String(100), nullable=False)
+    password = db.Column(db.String(150), nullable=False)
     deleted = db.Column(db.Boolean, server_default=False)
     activated = db.Column(db.Boolean, server_default=False)
     last_updated = db.Column(db.DateTime, server_default=sql.func.now())
